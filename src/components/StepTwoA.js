@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeaderComp from './HeaderComp'
 import FooterComp from './FooterComp'
 
 const StepTwoA = ({setStepOneOpen,stepTwoAOpen,setStepTwoAOpen,setStepThreeAOpen,setStepFourSOpen,setImage,image,getData,setError,error}) => {
 
+    const [imgPreview, setImgPreview] = useState(null)
+
     const selelectedFileHandler = async (e) => {
         setImage(e.target.files[0])
+        setImgPreview(URL.createObjectURL(e.target.files[0]))
     }
 
     const uploadImage = () => {
@@ -22,8 +25,9 @@ const StepTwoA = ({setStepOneOpen,stepTwoAOpen,setStepTwoAOpen,setStepThreeAOpen
             <div className="stepContainer">
                 <HeaderComp tittleText={"Upload Image"} descriptionText={"Upload Image to charge toll"} />
                 <div className="stepContent">
+                    <input type="file" onChange={selelectedFileHandler} />
                     <div className="imgPreview">
-                        <input type="file" onChange={selelectedFileHandler} />
+                        <img className="previewImg" src={imgPreview} alt="PreviewImage" />
                     </div>
                     <div className="uploadButton" onClick={uploadImage}>
                         <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
