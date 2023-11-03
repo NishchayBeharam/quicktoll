@@ -169,3 +169,13 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+.nextPageButton{
+    height: 48px;
+    width: 120px;
+    border: 2px solid var(--light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

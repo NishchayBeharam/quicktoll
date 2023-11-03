@@ -2,19 +2,11 @@ import React from 'react'
 import HeaderComp from './HeaderComp'
 import VehicleDetail from './VehicleDetail'
 import image from '../img/GJW115A1138.png'
+import FooterComp from './FooterComp'
 
-const vehicleDetails = {
-    registrationNumber: 'GJW115A1138',
-    ownerName: 'Kanta Nagy',
-    newBalance: '₹6340',
-    vehicleMake: 'Mahindra',
-    vehicleModel: 'XUV500',
-    vehicleColor: 'Silver'
-}
+const StepFourS = ({setStepOneOpen,setStepTwoAOpen,stepFourSOpen,setStepFourSOpen,vehicleDetails,setError,error}) => {
 
-
-const StepFourS = ({stepFourSOpen,setStepFourSOpen}) => {
-    if (stepFourSOpen) {
+    if (stepFourSOpen && vehicleDetails) {
         return (
             <div className="stepContainer">
                 <HeaderComp tittleText={"Vehicle Details"} descriptionText={"Owner was charged rs. 50"} />
@@ -22,7 +14,7 @@ const StepFourS = ({stepFourSOpen,setStepFourSOpen}) => {
                     <div className="vehicleDetails">
                         <VehicleDetail vehicleDetailsLabel={"Registration Number"} vehicleDetailsvalue={vehicleDetails.registrationNumber} />
                         <VehicleDetail vehicleDetailsLabel={"Owner Name"} vehicleDetailsvalue={vehicleDetails.ownerName} />
-                        <VehicleDetail vehicleDetailsLabel={"New Balance"} vehicleDetailsvalue={vehicleDetails.newBalance} />
+                        <VehicleDetail vehicleDetailsLabel={"New Balance"} vehicleDetailsvalue={'₹'+vehicleDetails.newBalance} />
                         <VehicleDetail vehicleDetailsLabel={"Vehicle Make"} vehicleDetailsvalue={vehicleDetails.vehicleMake} />
                         <VehicleDetail vehicleDetailsLabel={"Vehicle Model"} vehicleDetailsvalue={vehicleDetails.vehicleModel} />
                         <VehicleDetail vehicleDetailsLabel={"Vehicle Color"} vehicleDetailsvalue={vehicleDetails.vehicleColor} />
@@ -31,6 +23,7 @@ const StepFourS = ({stepFourSOpen,setStepFourSOpen}) => {
                         <img src={image} alt="" />
                     </div>
                 </div>
+                <FooterComp error={error} setError={setError} previousPageText={"Go Back"} nextPageText={"New Scan"} previousPage={setStepTwoAOpen} currentPage={setStepFourSOpen} nextPage={setStepOneOpen} />
             </div>
           )
     } else {

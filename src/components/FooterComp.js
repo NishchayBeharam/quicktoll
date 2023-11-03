@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FooterComp = ({previousPage,currentPage,nextPage}) => {
+const FooterComp = ({previousPageText,nextPageText,previousPage,currentPage,nextPage,error,setError}) => {
 
     const openPreviousPage = () =>{
         currentPage(false)
@@ -16,14 +16,15 @@ const FooterComp = ({previousPage,currentPage,nextPage}) => {
     <div className="footerContainer">
         {previousPage ? (
             <div className="previousPageButton" onClick={openPreviousPage}>
-                Go back
+                {previousPageText}
             </div>
         ) : (
             null
         )}
+        {error ? (error) : (null)}
         {nextPage ? (
             <div className="nextPageButton" onClick={openNextPage}>
-            Next
+                {nextPageText}
             </div>
         ) : (
             null
